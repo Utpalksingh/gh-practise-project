@@ -9,7 +9,7 @@ on:
       - main
       - master
 jobs:
-  run:
+  print-context-var:
     runs-on: ubuntu-latest
     steps:
       - name: Get code
@@ -19,3 +19,19 @@ jobs:
          echo "The event that triggered this workflow is ${{ github.event_name }}"
          echo "The branch that triggered this workflow is ${{ github.ref }}"
          echo "The PR head ref is ${{ github.event.pull_request.head.ref }}"
+         echo "sha: ${{ github.sha }}"
+         echo "actor: ${{ github.actor }}"
+         echo "repository: ${{ github.repository }}"
+         echo "workflow: ${{ github.workflow }}"
+         echo "run id: ${{ github.run_id }}"    
+         echo "run number: ${{ github.run_number }}"
+         echo "event path: ${{ github.event_path }}"
+  print-my-vars:
+    runs-on: ubuntu-latest
+    steps:
+        - name: Print my custom variable
+          env:
+            MY_VAR_1: Hello, World!
+          run: |
+           echo "My custom variable is $MY_VAR_1"
+           echo "varibale from github var ${{ vars.MY_VAR}}"
