@@ -14,3 +14,4 @@ jobs:
         run: |
          echo "The event that triggered this workflow is ${{ github.event_name }}"
          echo "The branch that triggered this workflow is ${{ github.ref }}"
+         echo "{{ github.event_pull_request.head.ref }}"
